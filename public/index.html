@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#142D4E">
+
+  <title>AeroReads | Rent. Read. Repeat.</title>
+  <meta name="description" content="Discover AeroReads, a smarter way to enjoy books through flexible book rental plans. Explore our idea and request a callback.">
+  <meta property="og:title" content="AeroReads | Rent. Read. Repeat.">
+  <meta property="og:description" content="Discover a better way to read with AeroReads. Explore our book rental plans.">
+  <link rel="icon" type="image/png" href="assets/aeroreads-icon-color.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #142D4E;
+      --teal: #159B91;
+      --teal-dark: #0F766E;
+      --teal-light: #E6F7F5;
+      --amber: #F59E0B;
+      --bg: #F8FAFC;
+      --text: #334155;
+      --muted: #64748B;
+      --white: #FFFFFF;
+      --border: #E2E8F0;
+      --shadow: 0 16px 45px rgba(20, 45, 78, .08);
+      --shadow-lg: 0 24px 50px rgba(20, 45, 78, .12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 95px;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    .section { padding: 88px 0; }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--teal-dark);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    h1, h2, h3 {
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    h1, h2 { font-family: "Playfair Display", serif; }
+
+    h2 { font-size: clamp(30px, 4vw, 43px); }
+
+    .section-heading {
+      max-width: 680px;
+      text-align: center;
+      margin: 0 auto 45px;
+    }
+
+    .section-heading p {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 9px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .25s ease;
+      text-align: center;
+    }
+
+    .btn-primary {
+      color: white;
+      background: var(--teal);
+      box-shadow: 0 4px 14px rgba(21, 155, 145, .25);
+    }
+
+    .btn-primary:hover {
+      background: var(--teal-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(21, 155, 145, .35);
+    }
+
+    .btn-outline {
+      color: var(--navy);
+      background: white;
+      border-color: var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--teal);
+      color: var(--teal-dark);
+      background: #F8FAFC;
+    }
+
+    /* Header and logo */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar {
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .brand-icon {
+      width: 46px;
+      height: 46px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .brand-name {
+      color: var(--navy);
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -.6px;
+      line-height: 1.15;
+    }
+
+    .brand-name .brand-aero {
+      color: var(--navy);
+    }
+
+    .brand-name .brand-reads {
+      color: var(--teal);
+    }
+
+    .brand-name small {
+      display: block;
+      color: var(--teal);
+      font-size: 9px;
+      letter-spacing: 2.2px;
+      margin-top: 3px;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links > a:not(.btn) {
+      color: var(--text);
+      transition: color .2s ease;
+    }
+
+    .nav-links > a:not(.btn):hover { color: var(--teal-dark); }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 0;
+      font-size: 27px;
+      color: var(--navy);
+      cursor: pointer;
+    }
+
+    /* Hero */
+
+    .hero {
+      padding: 76px 0 82px;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 90% 20%, #D7F3EE 0, transparent 40%),
+        linear-gradient(135deg, #F8FAFC, #EFF8F7);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 45px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 5.2vw, 62px);
+      letter-spacing: -1.2px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span { color: var(--teal-dark); }
+
+    .hero-copy {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-note {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+
+    .hero-art {
+      min-height: 410px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .art-circle {
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: #D8F0EC;
+      opacity: .8;
+    }
+
+    .book-stack {
+      position: relative;
+      z-index: 1;
+      transform: rotate(-5deg);
+      filter: drop-shadow(0 25px 22px rgba(20,45,78,.16));
+      transition: transform .35s ease;
+    }
+
+    .hero-art:hover .book-stack {
+      transform: rotate(-3deg) scale(1.02);
+    }
+
+    .book {
+      width: 260px;
+      height: 88px;
+      border-radius: 5px 12px 12px 5px;
+      margin: 9px 0;
+      display: flex;
+      align-items: center;
+      padding: 17px;
+      gap: 14px;
+      color: white;
+      border-left: 9px solid rgba(0,0,0,.18);
+      box-shadow: 0 4px 10px rgba(0,0,0,.08);
+      transition: transform .25s ease;
+    }
+
+    .book:hover {
+      transform: translateX(6px);
+    }
+
+    .book b {
+      font-family: "Playfair Display", serif;
+      font-size: 22px;
+    }
+
+    .book small {
+      display: block;
+      font-size: 10px;
+      opacity: .85;
+      letter-spacing: .5px;
+    }
+
+    .book-1 { background: var(--navy); }
+    .book-2 { background: var(--teal); margin-left: 18px; }
+    .book-3 { background: #D97706; margin-left: -12px; }
+    .book-4 { background: #315A78; margin-left: 15px; }
+
+    .floating-note {
+      position: absolute;
+      z-index: 2;
+      background: white;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      animation: floatBadge 3.5s ease-in-out infinite alternate;
+    }
+
+    .note-top { top: 45px; right: 0; }
+    .note-bottom { bottom: 25px; left: 0; animation-delay: -1.75s; }
+
+    @keyframes floatBadge {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-7px); }
+    }
+
+    /* Intro */
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .intro-copy p {
+      margin-top: 17px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .idea-card {
+      background: #F1F7F6;
+      border: 1px solid #DCECE9;
+      padding: 34px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(21, 155, 145, .05);
+    }
+
+    .idea-card h3 { font-size: 22px; margin-bottom: 20px; }
+
+    .check-list {
+      list-style: none;
+      display: grid;
+      gap: 15px;
+    }
+
+    .check-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 15px;
+    }
+
+    .check {
+      display: inline-flex;
+      flex: 0 0 25px;
+      height: 25px;
+      align-items: center;
+      justify-content: center;
+      background: #D5F2EB;
+      color: var(--teal-dark);
+      border-radius: 50%;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    /* How it works */
+
+    .soft-section { background: var(--bg); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .step {
+      background: white;
+      padding: 28px 22px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: all .25s ease;
+    }
+
+    .step:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+      border-color: #BBE3DC;
+    }
+
+    .step-number {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      background: #D8F0EC;
+      color: var(--teal-dark);
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .step h3 { font-size: 18px; margin-bottom: 10px; }
+    .step p { font-size: 14px; color: var(--muted); }
+
+    /* Rental plans */
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .plan {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 32px 26px;
+      display: flex;
+      flex-direction: column;
+      background: white;
+      position: relative;
+      transition: all .25s ease;
+    }
+
+    .plan:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .plan.featured {
+      border: 2px solid var(--teal);
+      box-shadow: 0 12px 35px rgba(21, 155, 145, .12);
+    }
+
+    .popular {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      background: var(--teal);
+      color: white;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .5px;
+    }
+
+    .plan h3 { font-size: 23px; margin-bottom: 10px; }
+
+    .plan-description {
+      color: var(--muted);
+      font-size: 14px;
+      min-height: 46px;
+    }
+
+    .plan-price {
+      color: var(--navy);
+      font-size: 34px;
+      font-weight: 800;
+      margin: 20px 0 2px;
+    }
+
+    .price-note {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 22px;
+    }
+
+    .plan ul {
+      list-style: none;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      margin-bottom: 26px;
+      flex: 1;
+    }
+
+    .plan li {
+      font-size: 14.5px;
+      padding: 8px 0;
+      color: #475569;
+    }
+
+    .plan li::before {
+      content: "✓";
+      color: var(--teal-dark);
+      font-weight: 800;
+      margin-right: 10px;
+    }
+
+    .plan .btn { width: 100%; }
+
+    .plans-disclaimer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12.5px;
+      margin-top: 28px;
+    }
+
+    /* Benefits */
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .benefit {
+      text-align: center;
+      padding: 24px 18px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: all .25s ease;
+    }
+
+    .benefit:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .benefit-icon {
+      width: 62px;
+      height: 62px;
+      margin: 0 auto 18px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: #E5F5F2;
+      font-size: 27px;
+    }
+
+    .benefit h3 { font-size: 17px; margin-bottom: 9px; }
+    .benefit p { font-size: 14px; color: var(--muted); }
+
+    /* Audience */
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .audience {
+      background: white;
+      padding: 24px 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-align: center;
+      font-weight: 700;
+      color: var(--navy);
+      transition: all .2s ease;
+    }
+
+    .audience:hover {
+      border-color: var(--teal);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .audience span { display: block; font-size: 28px; margin-bottom: 10px; }
+
+    /* About */
+
+    .about-box {
+      background: var(--navy);
+      color: white;
+      padding: 55px;
+      border-radius: 24px;
+      display: grid;
+      grid-template-columns: 1fr .8fr;
+      align-items: center;
+      gap: 40px;
+      box-shadow: 0 20px 45px rgba(20, 45, 78, .18);
+    }
+
+    .about-box h2 { color: white; }
+    .about-box p { color: #CBD5E1; margin-top: 17px; font-size: 15.5px; }
+
+    .about-quote {
+      font-family: "Playfair Display", serif;
+      font-size: 29px;
+      color: #8BE0D1;
+      line-height: 1.45;
+      font-style: italic;
+    }
+
+    /* FAQ */
+
+    .faq-list { max-width: 780px; margin: auto; }
+
+    details {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      transition: all .2s ease;
+    }
+
+    summary {
+      color: var(--navy);
+      font-weight: 700;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      font-size: 17px;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: "+";
+      color: var(--teal-dark);
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1;
+      transition: transform .2s ease;
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    details p {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.6;
+    }
+
+    /* Callback form */
+
+    .callback-section { background: #EDF7F5; }
+
+    .callback-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .callback-copy p { color: var(--muted); margin-top: 17px; font-size: 15.5px; }
+
+    .contact-point {
+      margin-top: 25px;
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 15px;
+      display: inline-block;
+      padding: 8px 16px;
+      background: white;
+      border-radius: 9px;
+      border: 1px solid #DCECE9;
+    }
+
+    .callback-form {
+      background: white;
+      padding: 34px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      box-shadow: 0 15px 35px rgba(20,45,78,.06);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 17px;
+    }
+
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+
+    .field label {
+      font-size: 13px;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .field input, .field select, .field textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      outline: none;
+      color: var(--text);
+      background: white;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(21,155,145,.14);
+    }
+
+    .field textarea { resize: vertical; min-height: 100px; }
+
+    .consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 12.5px;
+      color: var(--muted);
+      margin: 20px 0;
+      cursor: pointer;
+    }
+
+    .consent input {
+      margin-top: 4px;
+      accent-color: var(--teal);
+      cursor: pointer;
+    }
+
+    .callback-form .btn { width: 100%; }
+    .form-note { font-size: 11.5px; color: var(--muted); margin-top: 12px; }
+
+    /* Footer */
+
+    footer {
+      background: #0D2039;
+      color: #CBD5E1;
+      padding: 55px 0 24px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 35px;
+    }
+
+    footer .brand-name { color: white; }
+    footer .brand-name .brand-aero { color: white; }
+    footer .brand-name .brand-reads { color: #8BE0D1; }
+    footer .brand-name small { color: #8BE0D1; }
+    footer p { font-size: 14px; max-width: 350px; line-height: 1.6; }
+
+    footer h3 {
+      color: white;
+      font-size: 15px;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .footer-links { display: grid; gap: 10px; font-size: 13.5px; }
+    .footer-links a:hover { color: #8BE0D1; }
+
+    .footer-bottom {
+      border-top: 1px solid #334155;
+      padding-top: 22px;
+      font-size: 12.5px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 950px) {
+      .nav-links { gap: 14px; }
+      .nav-links > a:not(.btn) { display: none; }
+      .hero-grid { gap: 24px; }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .plans-grid { grid-template-columns: repeat(2, 1fr); }
+      .plan:last-child { grid-column: 1 / -1; }
+      .benefits-grid, .audience-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 620px) {
+      .section { padding: 62px 0; }
+      .navbar { min-height: 72px; }
+      .brand-icon { width: 40px; height: 40px; }
+      .brand-name { font-size: 21px; }
+
+      .menu-toggle { display: block; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 22px 5%;
+        border-bottom: 1px solid var(--border);
+        align-items: stretch;
+        flex-direction: column;
+        gap: 16px;
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-links > a:not(.btn) { display: block; }
+      .nav-links .btn { width: 100%; }
+
+      .hero { padding: 48px 0 35px; }
+      .hero-grid, .intro-grid, .callback-grid, .about-box { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 38px; }
+      .hero-copy { font-size: 15px; }
+      .hero-art { min-height: 320px; transform: scale(.84); margin: -5px 0; }
+      .art-circle { width: 275px; height: 275px; }
+      .note-top { right: -5px; }
+      .note-bottom { left: -5px; }
+
+      .intro-grid { gap: 28px; }
+      .idea-card { padding: 24px; }
+      .steps, .plans-grid, .benefits-grid, .audience-grid { grid-template-columns: 1fr; }
+      .plan:last-child { grid-column: auto; }
+      .plan { padding: 28px 22px; }
+
+      .about-box { padding: 32px 24px; gap: 25px; }
+      .about-quote { font-size: 24px; }
+
+      .callback-grid { gap: 28px; }
+      .callback-form { padding: 22px 18px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container navbar">
+      <a href="#home" class="brand-logo" aria-label="AeroReads homepage">
+        <img src="assets/aeroreads-icon-color.png" alt="AeroReads icon" class="brand-icon">
+        <span class="brand-name">
+          <span class="brand-aero">Aero</span><span class="brand-reads">Reads</span>
+          <small>RENT. READ. REPEAT.</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle"
+              aria-label="Open navigation" aria-expanded="false">☰</button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#idea">Our Idea</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#plans">Rental Plans</a>
+        <a href="#about">About</a>
+        <a href="#callback" class="btn btn-primary">Request a Callback</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">A new way to enjoy books</span>
+
+          <h1>Your Next Favourite Book Is <span>Just a Rental Away.</span></h1>
+
+          <p class="hero-copy">
+            Discover a smarter way to enjoy books with AeroReads.
+            Explore flexible rental plans, read more, and avoid buying
+            every book you want to read.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#plans" class="btn btn-primary">Explore Rental Plans →</a>
+            <a href="#how-it-works" class="btn btn-outline">How It Works</a>
+          </div>
+
+          <p class="hero-note">
+            A book-rental concept built around readers and the joy of discovering new stories.
+          </p>
+        </div>
+
+        <div class="hero-art" aria-label="Illustration of colourful books">
+          <div class="art-circle"></div>
+
+          <div class="book-stack">
+            <div class="book book-1">
+              <div><b>Read More.</b><small>DISCOVER NEW STORIES</small></div>
+            </div>
+            <div class="book book-2">
+              <div><b>Explore.</b><small>FIND YOUR NEXT FAVOURITE</small></div>
+            </div>
+            <div class="book book-3">
+              <div><b>Repeat.</b><small>MAKE READING A HABIT</small></div>
+            </div>
+            <div class="book book-4">
+              <div><b>AeroReads</b><small>RENT. READ. REPEAT.</small></div>
+            </div>
+          </div>
+
+          <div class="floating-note note-top">📚 More stories to discover</div>
+          <div class="floating-note note-bottom">✨ Your reading journey starts here</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IDEA -->
+    <section class="section" id="idea">
+      <div class="container intro-grid">
+        <div class="intro-copy">
+          <span class="eyebrow">The idea behind AeroReads</span>
+          <h2>A Better Way to Read More</h2>
+
+          <p>
+            Great books can inspire us, teach us, and take us to new worlds.
+            But buying every book we want to read may not be practical.
+          </p>
+
+          <p>
+            AeroReads aims to make reading more accessible through book-rental
+            plans that give readers another way to enjoy the books they love.
+          </p>
+
+          <p>
+            Our vision is simple: help readers explore more books with a plan
+            that suits their reading habits and budget.
+          </p>
+        </div>
+
+        <div class="idea-card">
+          <h3>Why explore book rentals?</h3>
+
+          <ul class="check-list">
+            <li><span class="check">✓</span><span>Enjoy books without buying every title.</span></li>
+            <li><span class="check">✓</span><span>Discover authors, stories, and new genres.</span></li>
+            <li><span class="check">✓</span><span>Explore plans designed around different reading habits.</span></li>
+            <li><span class="check">✓</span><span>Make more room for reading without owning every book.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section soft-section" id="how-it-works">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Simple by design</span>
+          <h2>How AeroReads Works</h2>
+          <p>Explore the proposed rental journey and contact us to discuss availability and plan details.</p>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">01</div>
+            <h3>Explore the Plans</h3>
+            <p>Compare rental options and understand their pricing and conditions.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">02</div>
+            <h3>Choose Your Plan</h3>
+            <p>Find a plan that fits your reading habits and budget.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">03</div>
+            <h3>Request a Callback</h3>
+            <p>Tell us your interests so you can discuss availability and next steps.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">04</div>
+            <h3>Start Reading</h3>
+            <p>Once rental arrangements are confirmed, begin your reading journey.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- RENTAL PLANS -->
+    <section class="section" id="plans">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Find your reading plan</span>
+          <h2>Rental Plans for Every Reader</h2>
+          <p>
+            Explore these example plan formats. Final prices, book limits,
+            and rental conditions will be confirmed by AeroReads.
+          </p>
+        </div>
+
+        <div class="plans-grid">
+          <article class="plan">
+            <h3>Starter Reader</h3>
+            <p class="plan-description">For readers who want to try book rentals.</p>
+
+            <div class="plan-price">Let's Talk</div>
+            <p class="price-note">Pricing to be confirmed</p>
+
+            <ul>
+              <li>Entry-level rental option</li>
+              <li>Discuss eligible books</li>
+              <li>Understand rental conditions</li>
+              <li>Help choosing a suitable plan</li>
+            </ul>
+
+            <button type="button" class="btn btn-outline plan-button"
+                    data-plan="Starter Reader">Ask About This Plan</button>
+          </article>
+
+          <article class="plan featured">
+            <span class="popular">POPULAR OPTION</span>
+
+            <h3>Regular Reader</h3>
+            <p class="plan-description">For readers who want to make books part of their routine.</p>
+
+            <div class="plan-price">Let's Talk</div>
+            <p class="price-note">Pricing to be confirmed</p>
+
+            <ul>
+              <li>Plan designed for regular reading</li>
+              <li>Discuss book allowance</li>
+              <li>Understand rental duration</li>
+              <li>Ask about delivery options</li>
+            </ul>
+
+            <button type="button" class="btn btn-primary plan-button"
+                    data-plan="Regular Reader">Ask About This Plan</button>
+          </article>
+
+          <article class="plan">
+            <h3>Book Lover</h3>
+            <p class="plan-description">For enthusiastic readers ready to explore more titles.</p>
+
+            <div class="plan-price">Let's Talk</div>
+            <p class="price-note">Pricing to be confirmed</p>
+
+            <ul>
+              <li>Discuss a suitable rental plan</li>
+              <li>Explore different genres</li>
+              <li>Ask about exchange options</li>
+              <li>Understand all applicable fees</li>
+            </ul>
+
+            <button type="button" class="btn btn-outline plan-button"
+                    data-plan="Book Lover">Ask About This Plan</button>
+          </article>
+        </div>
+
+        <p class="plans-disclaimer">
+          These are illustrative plan names, not confirmed offers. Confirm prices,
+          deposits, delivery fees, book limits, and terms before accepting bookings.
+        </p>
+      </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="section soft-section" id="benefits">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">The AeroReads vision</span>
+          <h2>More Reading. More Possibilities.</h2>
+          <p>A book-rental concept designed around the needs of modern readers.</p>
+        </div>
+
+        <div class="benefits-grid">
+          <div class="benefit">
+            <div class="benefit-icon">📖</div>
+            <h3>Read More</h3>
+            <p>Explore a wider reading journey through rental options.</p>
+          </div>
+
+          <div class="benefit">
+            <div class="benefit-icon">💡</div>
+            <h3>Discover Ideas</h3>
+            <p>Find inspiration across different authors and subjects.</p>
+          </div>
+
+          <div class="benefit">
+            <div class="benefit-icon">🔄</div>
+            <h3>Flexible Reading</h3>
+            <p>Explore a rental approach instead of purchasing every title.</p>
+          </div>
+
+          <div class="benefit">
+            <div class="benefit-icon">❤️</div>
+            <h3>Made for Readers</h3>
+            <p>Choose a reading journey that fits your interests.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUDIENCE -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">For everyone who loves learning</span>
+          <h2>Who Is AeroReads For?</h2>
+          <p>We want to make exploring books easier for readers at different stages of life.</p>
+        </div>
+
+        <div class="audience-grid">
+          <div class="audience"><span>🎓</span>Students</div>
+          <div class="audience"><span>💼</span>Working Professionals</div>
+          <div class="audience"><span>📚</span>Book Lovers</div>
+          <div class="audience"><span>🌱</span>Curious Minds</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="about-box">
+          <div>
+            <span class="eyebrow" style="color:#8BE0D1">About AeroReads</span>
+            <h2>Our Goal Is Simple: Help More People Read.</h2>
+
+            <p>
+              AeroReads is built around a simple idea: enjoying books should
+              have more options than buying every book you want to read.
+            </p>
+
+            <p>
+              We are developing a book-rental concept focused on accessibility,
+              discovery, and a reading experience that works for different readers.
+            </p>
+          </div>
+
+          <div class="about-quote">
+            “Rent a book. Discover a world. Repeat the joy of reading.”
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section soft-section" id="faq">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Questions and answers</span>
+          <h2>Frequently Asked Questions</h2>
+          <p>Have a question? Request a callback to discuss the details.</p>
+        </div>
+
+        <div class="faq-list">
+          <details>
+            <summary>What is AeroReads?</summary>
+            <p>AeroReads is a book-rental concept intended to help readers enjoy books through rental plans instead of purchasing every title.</p>
+          </details>
+
+          <details>
+            <summary>How does book rental work?</summary>
+            <p>Explore the plans and request a callback. Our team can discuss available books, rental duration, and the next steps.</p>
+          </details>
+
+          <details>
+            <summary>How much do the rental plans cost?</summary>
+            <p>Final plan prices are being confirmed. Request a callback to ask about the latest plan details.</p>
+          </details>
+
+          <details>
+            <summary>Can I request a particular book?</summary>
+            <p>You can mention books or genres that interest you in the callback form. Availability will need to be confirmed.</p>
+          </details>
+
+          <details>
+            <summary>Are delivery charges or deposits required?</summary>
+            <p>Delivery charges, deposits, and other terms will depend on the final rental plans and will be explained before you commit.</p>
+          </details>
+
+          <details>
+            <summary>How do I get started?</summary>
+            <p>Choose a plan that interests you and submit the callback form. This enquiry does not itself create an order or subscription.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALLBACK -->
+    <section class="section callback-section" id="callback">
+      <div class="container callback-grid">
+        <div class="callback-copy">
+          <span class="eyebrow">Let's connect</span>
+          <h2>Ready to Explore a Better Way to Read?</h2>
+
+          <p>
+            Interested in AeroReads? Share your contact details and the plan
+            you are considering. Tell us which books or genres interest you.
+          </p>
+
+          <p>
+            This is an enquiry form only. Submitting it does not confirm
+            a rental, payment, or delivery.
+          </p>
+
+          <div class="contact-point">📚 AeroReads — Rent. Read. Repeat.</div>
+        </div>
+
+        <!--
+          CALLBACK SETUP:
+          Replace YOUR_EMAIL with an email address you control.
+          Verify the address with FormSubmit before accepting real enquiries.
+          Documentation: https://formsubmit.co/
+        -->
+        <form class="callback-form" id="callbackForm"
+              action="https://formsubmit.co/YOUR_EMAIL"
+              method="POST">
+
+          <input type="hidden" name="_subject" value="New AeroReads Callback Request">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="true">
+
+          <!-- Honeypot field -->
+          <input type="text" name="_honey" tabindex="-1"
+                 autocomplete="off" aria-hidden="true"
+                 style="position:absolute;left:-9999px;">
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Full Name *</label>
+              <input id="name" name="name" type="text" required
+                     maxlength="100" autocomplete="name"
+                     placeholder="Enter your name">
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone Number *</label>
+              <input id="phone" name="phone" type="tel" required
+                     maxlength="20" autocomplete="tel"
+                     pattern="[+0-9() -]{8,20}"
+                     placeholder="+91 98765 43210">
+            </div>
+
+            <div class="field">
+              <label for="email">Email Address</label>
+              <input id="email" name="email" type="email"
+                     maxlength="150" autocomplete="email"
+                     placeholder="you@example.com">
+            </div>
+
+            <div class="field">
+              <label for="city">Your City</label>
+              <input id="city" name="city" type="text"
+                     maxlength="100" autocomplete="address-level2"
+                     placeholder="Enter your city">
+            </div>
+
+            <div class="field full">
+              <label for="plan">Interested Rental Plan</label>
+              <select id="plan" name="interested_plan">
+                <option value="">Not sure yet</option>
+                <option value="Starter Reader">Starter Reader</option>
+                <option value="Regular Reader">Regular Reader</option>
+                <option value="Book Lover">Book Lover</option>
+                <option value="Other / Business Enquiry">Other / Business Enquiry</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="time">Preferred Callback Time</label>
+              <select id="time" name="preferred_callback_time">
+                <option value="">No preference</option>
+                <option value="Morning">Morning</option>
+                <option value="Afternoon">Afternoon</option>
+                <option value="Evening">Evening</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="message">What would you like to know?</label>
+              <textarea id="message" name="message" maxlength="1000"
+                        placeholder="Tell us about your reading interests or questions..."></textarea>
+            </div>
+          </div>
+
+          <label class="consent">
+            <input type="checkbox" name="consent" value="yes" required>
+            <span>I agree to be contacted by AeroReads regarding my enquiry. *</span>
+          </label>
+
+          <button type="submit" class="btn btn-primary">
+            Request My Callback →
+          </button>
+
+          <p class="form-note">
+            Do not submit payment information or other sensitive information in this form.
+            Publish a privacy policy before collecting real customer details.
+          </p>
+
+          <p id="formMessage" role="status" aria-live="polite"
+             style="display:none;margin-top:14px;font-size:13px;color:#0F766E;">
+            Your browser is submitting your enquiry. Please wait for the form service's confirmation.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#home" class="brand-logo">
+            <img src="assets/aeroreads-icon-color.png"
+                 alt="AeroReads logo" class="brand-icon">
+            <span class="brand-name">
+              <span class="brand-aero">Aero</span><span class="brand-reads">Reads</span>
+              <small>RENT. READ. REPEAT.</small>
+            </span>
+          </a>
+
+          <p style="margin-top:15px">
+            A book-rental concept built around discovering stories,
+            exploring ideas, and making room for more reading.
+          </p>
+        </div>
+
+        <div>
+          <h3>Explore</h3>
+          <div class="footer-links">
+            <a href="#idea">Our Idea</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#plans">Rental Plans</a>
+            <a href="#about">About Us</a>
+          </div>
+        </div>
+
+        <div>
+          <h3>Get in Touch</h3>
+          <div class="footer-links">
+            <a href="#callback">Request a Callback</a>
+            <a href="#faq">Frequently Asked Questions</a>
+            <a href="#privacy-note">Privacy Information</a>
+          </div>
+
+          <p id="privacy-note" style="margin-top:12px;font-size:12px">
+            Add your published privacy policy before collecting real enquiries.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> AeroReads. All rights reserved.</span>
+        <span>Rent. Read. Repeat.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation" : "Open navigation"
+      );
+      menuToggle.textContent = isOpen ? "✕" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    // Automatically select a plan when its callback button is clicked
+    document.querySelectorAll(".plan-button").forEach(button => {
+      button.addEventListener("click", () => {
+        document.getElementById("plan").value = button.dataset.plan;
+
+        document.getElementById("callback").scrollIntoView({
+          behavior: "smooth"
+        });
+
+        setTimeout(() => {
+          document.getElementById("name").focus({ preventScroll: true });
+        }, 450);
+      });
+    });
+
+    // Current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Callback form setup check
+    const callbackForm = document.getElementById("callbackForm");
+    const formMessage = document.getElementById("formMessage");
+
+    callbackForm.addEventListener("submit", event => {
+      const action = callbackForm.getAttribute("action");
+
+      if (action.includes("YOUR_EMAIL")) {
+        event.preventDefault();
+
+        alert(
+          "Callback form setup is incomplete. Replace YOUR_EMAIL in the form action with your email address first."
+        );
+
+        return;
+      }
+
+      if (!callbackForm.reportValidity()) {
+        event.preventDefault();
+        return;
+      }
+
+      // This message means submission is starting, not that delivery succeeded.
+      formMessage.style.display = "block";
+    });
+  </script>
+</body>
+</html>
